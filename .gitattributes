@@ -1,0 +1,6 @@
+*.fbx filter=lfs diff=lfs merge=lfs -text
+*.unitypackage filter=lfs diff=lfs merge=lfs -text
+lfs/objects/6a/36/6a36a495d972a45c0c3e855b587cd5744a66d60e6c4a8d5c780bad924d613804 filter=lfs diff=lfs merge=lfs -text
+Assets/Build/entregaUIYScriptableObjects.zip filter=lfs diff=lfs merge=lfs -text
+Assets/Build/projectMFirstIteration.unitypackage filter=lfs diff=lfs merge=lfs -text
+Assets/Build/entregaTDA.zip filter=lfs diff=lfs merge=lfs -text

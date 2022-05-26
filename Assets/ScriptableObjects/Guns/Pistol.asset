@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78faba26cc559fe41812ecd61b6d07af, type: 3}
+  m_Name: Pistol
+  m_EditorClassIdentifier: 
+  ItemName: Pistol
+  ShootDamage: 10
+  ShotDistance: 40
+  Recoil: 1
+  BulletsInMagazine: 12
+  GunPrefab: {fileID: 6726760118116921084, guid: b26fb949fa572874a95d59d784462375, type: 3}
