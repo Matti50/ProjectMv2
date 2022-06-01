@@ -1,6 +1,5 @@
-using UnityEngine;
 
-public interface IGun
+public interface IGun: IPickeable
 {
-    public GunData GunData{ get; set; }
+    public Gun GunData{ get; set; }
 }

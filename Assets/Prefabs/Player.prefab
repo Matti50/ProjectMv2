@@ -2893,7 +2893,7 @@ GameObject:
   - component: {fileID: 919132148024543438}
   - component: {fileID: 919132148024543440}
   - component: {fileID: 919132148024543441}
-  - component: {fileID: 944488131}
+  - component: {fileID: 2672581174806255613}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2964,7 +2964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _followTarget: {fileID: 8883147837051225546}
   _mouseRotationSpeed: 3
-  _keyboardRotationSpeed: 25
+  _keyboardRotationSpeed: 40
 --- !u!114 &919132148024543441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2981,7 +2981,7 @@ MonoBehaviour:
   _sprintMultiplier: 1.5
   _currentSpeed: 0
   _jumpForce: 5
---- !u!114 &944488131
+--- !u!114 &2672581174806255613
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2990,10 +2990,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8549489545314419677}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 176bbb2b2a34a5b419fcf870f661727b, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b4d69ef4186a3241a1cbc09401773e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gunPosition: {fileID: 8574172197160872927}
+  _capacity: 5
+  _gunPickedUp: {fileID: 11400000, guid: 7df0b446856f2f84db88f4023ff2622c, type: 2}
+  _healPickedUp: {fileID: 11400000, guid: 49243743474c9fa48a37f63215360304, type: 2}
 --- !u!1 &8574172197160872927
 GameObject:
   m_ObjectHideFlags: 0
@@ -3018,7 +3020,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8574172197160872927}
   m_LocalRotation: {x: -0.7660445, y: 0, z: 0, w: 0.64278764}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.03, y: 0.022, z: -0.004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4012864502921734905}

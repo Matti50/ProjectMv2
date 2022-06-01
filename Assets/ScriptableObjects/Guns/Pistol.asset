@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78faba26cc559fe41812ecd61b6d07af, type: 3}
+  m_Script: {fileID: 11500000, guid: c1aef277172bd614a9fbd0c9cfa6b081, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  ItemName: Pistol
+  Name: Pistol
+  Image: {fileID: 0}
   ShootDamage: 10
-  ShotDistance: 40
+  ShotDistance: 50
   Recoil: 1
   BulletsInMagazine: 12
   GunPrefab: {fileID: 6726760118116921084, guid: b26fb949fa572874a95d59d784462375, type: 3}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6800897430547252510}
   - component: {fileID: 8554177865967533140}
   - component: {fileID: 5157520232434358464}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,8 @@ GameObject:
   - component: {fileID: 5880339238902469555}
   - component: {fileID: 2826396132474494449}
   - component: {fileID: 9936186}
-  m_Layer: 9
+  - component: {fileID: 1192460078}
+  m_Layer: 11
   m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,3 +158,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1192460078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6726760118116921084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aafc389cf47b7ce499c4f55e305c8fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventToListen: {fileID: 11400000, guid: 7df0b446856f2f84db88f4023ff2622c, type: 2}
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2826396132474494449}
+        m_TargetAssemblyTypeName: PistolController, Assembly-CSharp
+        m_MethodName: Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
