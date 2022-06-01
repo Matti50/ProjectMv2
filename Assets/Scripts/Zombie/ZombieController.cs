@@ -211,7 +211,7 @@ public class ZombieController : MonoBehaviour
         {
             var lifeController = collision.gameObject.GetComponent<LifeController>();
             lifeController.TakeDamage(DamageModifier());
-            UIController.Instance.SetLife(lifeController.GetCurrentLife());
+            //UIController.Instance.SetLife(lifeController.GetCurrentLife());
             _damageTimeCounter = Time.time + _timeToMakeDamage;
         }
     }

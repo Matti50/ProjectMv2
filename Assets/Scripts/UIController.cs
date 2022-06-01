@@ -1,39 +1,41 @@
-using TMPro;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    public static UIController Instance;
+    private float _health, _maxHealth = 100f;
 
-    private void Awake()
+    private float _lerpSpeed;
+
+    [SerializeField]
+    private Image _healthBar;
+
+    private void Start()
     {
-        if(Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
+        _health = _maxHealth;
     }
 
-    public void Start()
+    private void Update()
     {
-        _missionDescription.text = GameManager._instance.GetMissionDescription();
-    }
 
-    [SerializeField]
-    private TextMeshProUGUI _lifeAmmount;
-    [SerializeField]
-    private TextMeshProUGUI _bulletsAmmount;
-    [SerializeField]
-    private TextMeshProUGUI _missionDescription;
+        _lerpSpeed = 3f * Time.deltaTime;
+        HealthBarFiller();
+        ColorChanger();
+    }
 
     public void SetLife(int life)
     {
-        _lifeAmmount.text = life.ToString();
+        _health = life;
     }
 
-    public void SetBullets(int bullets)
+    private void HealthBarFiller()
     {
-        _bulletsAmmount.text = bullets.ToString();
+        _healthBar.fillAmount = Mathf.Lerp(_healthBar.fillAmount, _health / _maxHealth, _lerpSpeed);
+    }
+    
+    private void ColorChanger()
+    {
+        Color color = Color.Lerp(Color.red, Color.green, _health / _maxHealth);
+        _healthBar.color = color;
     }
 }

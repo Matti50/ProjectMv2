@@ -2994,8 +2994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _capacity: 5
-  _gunPickedUp: {fileID: 11400000, guid: 7df0b446856f2f84db88f4023ff2622c, type: 2}
-  _healPickedUp: {fileID: 11400000, guid: 49243743474c9fa48a37f63215360304, type: 2}
+  _itemPosition: {fileID: 2466318964152582041}
 --- !u!1 &8574172197160872927
 GameObject:
   m_ObjectHideFlags: 0
@@ -3006,7 +3005,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2466318964152582041}
   m_Layer: 0
-  m_Name: Weapon
+  m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

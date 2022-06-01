@@ -46,7 +46,7 @@ public class PlayerShootController : MonoBehaviour
     {
         if (_totalBullets == 0) return;
 
-        UIController.Instance.SetBullets(--_totalBullets);
+        //UIController.Instance.SetBullets(--_totalBullets);
         var hit = Physics.Raycast(_shootPosition.transform.position, _shootPosition.transform.forward,out var rayCastInfo,_currentGun.GunData.ShotDistance);
         
         if(hit && rayCastInfo.collider.gameObject.layer == (int)Layers.Zombie)
@@ -74,7 +74,7 @@ public class PlayerShootController : MonoBehaviour
                 {
                     _currentGun = pickedGun;
                     _totalBullets = _currentGun.GunData.BulletsInMagazine;
-                    UIController.Instance.SetBullets(_totalBullets);
+                    //UIController.Instance.SetBullets(_totalBullets);
                     Instantiate(pickedGun.GunData.GunPrefab, _shootPosition.position, _shootPosition.rotation, _shootPosition);
                     Destroy(other.gameObject);
                 }

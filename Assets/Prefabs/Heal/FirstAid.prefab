@@ -90,7 +90,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5648549730300895859}
-  - component: {fileID: 5325813804482413982}
   - component: {fileID: 5325813804482413981}
   - component: {fileID: 919132149003667571}
   - component: {fileID: 919132149003667572}
@@ -116,34 +115,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5325813804482413982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4983372221667277001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aafc389cf47b7ce499c4f55e305c8fc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _eventToListen: {fileID: 11400000, guid: 49243743474c9fa48a37f63215360304, type: 2}
-  _unityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5325813804482413981}
-        m_TargetAssemblyTypeName: HealController, Assembly-CSharp
-        m_MethodName: Destroy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &5325813804482413981
 MonoBehaviour:
   m_ObjectHideFlags: 0

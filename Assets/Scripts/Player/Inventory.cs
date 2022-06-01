@@ -6,17 +6,13 @@ public class Inventory : MonoBehaviour
     private int _capacity;
 
     [SerializeField]
+    private Transform _itemPosition;
+
     private IPickeable[] _inventory;
 
-    private IPickeable _currentEquiped;
+    private GameObject _currentEquiped;
 
     private int _ammountOfItems;
-
-    [SerializeField]
-    private GameEvent _gunPickedUp;
-
-    [SerializeField]
-    private GameEvent _healPickedUp;
 
     private void Awake()
     {
@@ -24,24 +20,30 @@ public class Inventory : MonoBehaviour
         _inventory = new IPickeable[_capacity];
     }
 
-    // poner en el update lo de ir cambiando de item
-    
+    private void Update()
+    {
+        if (Input.anyKeyDown)
+        {
+            var ok = int.TryParse(Input.inputString, out int key);
+            if(ok)
+            {
+                UnequipItem();
+                Equip(key);
+            }
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer == 11)
         {
-            if (Input.GetKeyDown(KeyCode.E)) //mover esto a un input controller
+            if (Input.GetKeyDown(KeyCode.E)) //mover esto a un input controller como action button pressed, posiblemente un evento
             {
+                if (!AbleToPick()) return;
+
                 var item = other.GetComponent<IPickeable>();
                 PutOnInventory(item);
-                if (item.Id == 1) 
-                {
-                    _gunPickedUp.Raise();
-                }
-                else
-                {
-                    _healPickedUp.Raise();
-                }
+                item.GetPickedUp();
             } 
         }
     }
@@ -49,7 +51,40 @@ public class Inventory : MonoBehaviour
     private void PutOnInventory(IPickeable item) 
     {
         _inventory[_ammountOfItems] = item;
-        Debug.Log(_inventory[_ammountOfItems]);
         _ammountOfItems++;
+    }
+
+    private void PutItemOnHandPosition(IPickeable item) 
+    {
+        _currentEquiped = item.GetItem;
+        _currentEquiped.transform.parent = _itemPosition;
+        _currentEquiped.transform.position = _itemPosition.position;
+
+        (Vector3 correctRotation, Vector3 correctPosition) = item.GetOkRotationAndPosition();
+        _currentEquiped.transform.localEulerAngles = correctRotation;
+        _currentEquiped.transform.localPosition = correctPosition;
+
+        _currentEquiped.SetActive(true);
+    }
+
+    private void UnequipItem() 
+    {
+        if (_currentEquiped != null)
+        {
+            _currentEquiped.SetActive(false);
+            _currentEquiped.transform.parent = null;
+        }
+    }
+
+    private void Equip(int position)
+    {
+        if (position == 0) return;
+
+        PutItemOnHandPosition(_inventory[position - 1]);
+    }
+
+    private bool AbleToPick() 
+    {
+        return _ammountOfItems < _capacity;
     }
 }

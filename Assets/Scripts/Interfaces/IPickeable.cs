@@ -1,5 +1,8 @@
+using UnityEngine;
+
 public interface IPickeable
 {
-    public int Id { get; }
-    public void Destroy();
+    public void GetPickedUp();
+    public GameObject GetItem { get; }
+    public (Vector3, Vector3) GetOkRotationAndPosition();
 }

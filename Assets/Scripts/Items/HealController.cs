@@ -5,7 +5,7 @@ public class HealController :MonoBehaviour, IPickeable
     [SerializeField]
     private Heal heal;
 
-    public int Id { get; } = 2;
+    public GameObject GetItem => gameObject;
 
     void Start()
     {
@@ -16,8 +16,15 @@ public class HealController :MonoBehaviour, IPickeable
         
     }
 
-    public void Destroy() 
+    public (Vector3, Vector3) GetOkRotationAndPosition()
     {
-        Destroy(gameObject);
+        // first rotation, then position
+        return (new Vector3(0f, 14f, 75f), new Vector3(0.0068f, 0.0166f, 0.0433f));
+    }
+
+    public void GetPickedUp()
+    {
+        gameObject.GetComponent<Collider>().enabled = false;
+        gameObject.SetActive(false);
     }
 }

@@ -28,8 +28,6 @@ public class GunPicker : MonoBehaviour
         var createdGun = Instantiate(gun.GunData.GunPrefab, _gunPosition.transform.position, _gunPosition.transform.rotation, _gunPosition.transform);
 
         //for pistol only
-        createdGun.transform.localEulerAngles = new Vector3(0f, 14f, 75f);
-        createdGun.transform.localPosition = new Vector3(0.0068f, 0.0166f, 0.0433f);
 
     }
 }
