@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   Name: Pistol
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: 69a19930902281a4092290f53ffbbc3f, type: 3}
+  ItemPrefab: {fileID: 0}
   ShootDamage: 10
   ShotDistance: 50
   Recoil: 1

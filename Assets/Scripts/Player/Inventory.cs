@@ -8,6 +8,9 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private Transform _itemPosition;
 
+    [SerializeField]
+    private UIEvent _objectEquipedEvent;
+
     private IPickeable[] _inventory;
 
     private GameObject _currentEquiped;
@@ -25,7 +28,7 @@ public class Inventory : MonoBehaviour
         if (Input.anyKeyDown)
         {
             var ok = int.TryParse(Input.inputString, out int key);
-            if(ok)
+            if (ok)
             {
                 UnequipItem();
                 Equip(key);
@@ -44,17 +47,17 @@ public class Inventory : MonoBehaviour
                 var item = other.GetComponent<IPickeable>();
                 PutOnInventory(item);
                 item.GetPickedUp();
-            } 
+            }
         }
     }
 
-    private void PutOnInventory(IPickeable item) 
+    private void PutOnInventory(IPickeable item)
     {
         _inventory[_ammountOfItems] = item;
         _ammountOfItems++;
     }
 
-    private void PutItemOnHandPosition(IPickeable item) 
+    private void PutItemOnHandPosition(IPickeable item)
     {
         _currentEquiped = item.GetItem;
         _currentEquiped.transform.parent = _itemPosition;
@@ -64,10 +67,12 @@ public class Inventory : MonoBehaviour
         _currentEquiped.transform.localEulerAngles = correctRotation;
         _currentEquiped.transform.localPosition = correctPosition;
 
+        _objectEquipedEvent.Raise(new UiElementEquipedParam(item.GetImage()));
+
         _currentEquiped.SetActive(true);
     }
 
-    private void UnequipItem() 
+    private void UnequipItem()
     {
         if (_currentEquiped != null)
         {
@@ -78,7 +83,12 @@ public class Inventory : MonoBehaviour
 
     private void Equip(int position)
     {
-        if (position == 0) return;
+        if (position == 0 || _inventory[position - 1] == null) 
+        {
+            _objectEquipedEvent.Raise(null);
+            _currentEquiped = null;
+            return;
+        } 
 
         PutItemOnHandPosition(_inventory[position - 1]);
     }
@@ -86,5 +96,27 @@ public class Inventory : MonoBehaviour
     private bool AbleToPick() 
     {
         return _ammountOfItems < _capacity;
+    }
+
+    public bool isGunEquiped()
+    {
+        bool isSomethingEquiped = _currentEquiped != null;
+
+        if (isSomethingEquiped)
+        {
+            var isGun = _currentEquiped.TryGetComponent(out IGun component); //TODO: intentar optimizar
+            return isGun;
+        }
+        else 
+        { 
+            return false; 
+        }
+    }
+
+    public IGun GetEquipedGun()
+    {
+        if (!isGunEquiped()) return null;
+
+        return _currentEquiped.GetComponent<IGun>();
     }
 }

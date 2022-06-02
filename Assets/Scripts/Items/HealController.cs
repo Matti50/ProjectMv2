@@ -27,4 +27,9 @@ public class HealController :MonoBehaviour, IPickeable
         gameObject.GetComponent<Collider>().enabled = false;
         gameObject.SetActive(false);
     }
+
+    public Sprite GetImage()
+    {
+        throw new System.NotImplementedException();
+    }
 }

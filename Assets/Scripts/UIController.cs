@@ -13,14 +13,17 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private Image _healthCross;
 
+    [SerializeField]
+    private GameObject _item;
+
     private void Start()
     {
+        _item.gameObject.SetActive(false);
         _health = _maxHealth;
     }
 
     private void Update()
     {
-
         _lerpSpeed = 3f * Time.deltaTime;
         HealthBarFiller();
         ColorChanger();
@@ -29,6 +32,12 @@ public class UIController : MonoBehaviour
     private void SetLife(float lifeChangeAmmount)
     {
         _health += lifeChangeAmmount;
+    }
+
+    private void SetCurrentObjectSprite(Sprite sprite)
+    {
+        var image = _item.GetComponentInChildren<Image>();
+        image.sprite = sprite;
     }
 
     private void HealthBarFiller()
@@ -49,4 +58,20 @@ public class UIController : MonoBehaviour
 
         SetLife(changedLifeEvent.AmmountOfLifeChanged());
     }
+
+    public void OnItemEquiped(UIEventParam uiEvent)
+    {
+        if(uiEvent == null)
+        {
+            _item.gameObject.SetActive(false);
+            return;
+        }
+
+        _item.gameObject.SetActive(true);
+
+        UiElementEquipedParam objectEquiped = uiEvent as UiElementEquipedParam;
+
+        SetCurrentObjectSprite(objectEquiped.ItemSpray());
+    }
+
 }
