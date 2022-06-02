@@ -1,18 +1,13 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public struct UIEventParam
-{
-    public int Value;
-}
-
 public class UIEventListener : MonoBehaviour
 {
     [SerializeField]
     private UIEvent _eventToListen;
 
     [SerializeField]
-    private UnityEvent _unityEvent;
+    private UnityEvent<UIEventParam> _unityEvent;
 
     private void Awake()
     {
@@ -24,8 +19,8 @@ public class UIEventListener : MonoBehaviour
         _eventToListen.UnregisterListener(this);
     }
 
-    public void RaiseEvent()
+    public void RaiseEvent(UIEventParam uIEventParam)
     {
-        _unityEvent.Invoke();
+        _unityEvent.Invoke(uIEventParam);
     }
 }

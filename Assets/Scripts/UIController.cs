@@ -10,6 +10,9 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private Image _healthBar;
 
+    [SerializeField]
+    private Image _healthCross;
+
     private void Start()
     {
         _health = _maxHealth;
@@ -23,9 +26,9 @@ public class UIController : MonoBehaviour
         ColorChanger();
     }
 
-    public void SetLife(int life)
+    private void SetLife(float lifeChangeAmmount)
     {
-        _health = life;
+        _health += lifeChangeAmmount;
     }
 
     private void HealthBarFiller()
@@ -37,5 +40,13 @@ public class UIController : MonoBehaviour
     {
         Color color = Color.Lerp(Color.red, Color.green, _health / _maxHealth);
         _healthBar.color = color;
+        _healthCross.color = color;
+    }
+
+    public void OnLifeChanged(UIEventParam uiEvent)
+    {
+        UILifeChangedParam changedLifeEvent = uiEvent as UILifeChangedParam;
+
+        SetLife(changedLifeEvent.AmmountOfLifeChanged());
     }
 }

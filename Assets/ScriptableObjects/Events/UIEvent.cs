@@ -1,26 +1,26 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
-[CreateAssetMenu(fileName ="New UI Event", menuName = "ScriptableObjects/Events/UIEvent",order = 1)]
+[CreateAssetMenu(fileName = "New UI Event", menuName = "ScriptableObjects/Events/UIEvent", order = 2)]
 public class UIEvent : ScriptableObject
 {
-    private List<UIEventListener> listeners = new List<UIEventListener>();
+    private List<UIEventListener> _listeners = new List<UIEventListener>();
 
-    public void Raise()
+    public void Raise(UIEventParam p)
     {
-        for(int i = 0; i < listeners.Count; i++)
+        for (int i = _listeners.Count - 1; i >= 0; i--)
         {
-            listeners[i].RaiseEvent();
+            _listeners[i].RaiseEvent(p);
         }
     }
 
     public void RegisterListener(UIEventListener listener)
     {
-        listeners.Add(listener);
+        _listeners.Add(listener);
     }
 
     public void UnregisterListener(UIEventListener listener)
     {
-        listeners.Remove(listener);
+        _listeners.Remove(listener);
     }
 }
