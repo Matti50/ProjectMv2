@@ -30,6 +30,6 @@ public class HealController :MonoBehaviour, IPickeable
 
     public Sprite GetImage()
     {
-        throw new System.NotImplementedException();
+        return heal.Image;
     }
 }

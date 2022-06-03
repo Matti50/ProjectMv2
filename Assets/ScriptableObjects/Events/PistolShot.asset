@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d1823d18b5bc024c9792bbe7edf0b57, type: 3}
-  m_Name: Small Heal
+  m_Script: {fileID: 11500000, guid: 699da52a0998f0849b6200d1192e1866, type: 3}
+  m_Name: PistolShot
   m_EditorClassIdentifier: 
-  Name: Small Heal
-  Image: {fileID: 21300000, guid: 3de1fef6a5b56474f82810cae3f450c3, type: 3}
-  LifeIncrease: 20

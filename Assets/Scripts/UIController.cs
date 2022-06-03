@@ -1,5 +1,6 @@
 using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
@@ -12,6 +13,12 @@ public class UIController : MonoBehaviour
 
     [SerializeField]
     private Image _healthCross;
+
+    [SerializeField]
+    private TextMeshProUGUI _currentBullets;
+
+    [SerializeField]
+    private TextMeshProUGUI _totalBullets;
 
     [SerializeField]
     private GameObject _item;
@@ -38,6 +45,30 @@ public class UIController : MonoBehaviour
     {
         var image = _item.GetComponentInChildren<Image>();
         image.sprite = sprite;
+    }
+
+    private void SetCurrentBullets(int? currentBullets)
+    {
+        if(currentBullets == null)
+        {
+            _currentBullets.gameObject.SetActive(false);
+            return;
+        }
+
+        _currentBullets.text = currentBullets.Value.ToString();
+        _currentBullets.gameObject.SetActive(true);
+    }
+
+    private void SetTotalBullets(int? totalBullets)
+    {
+        if (totalBullets == null)
+        {
+            _totalBullets.gameObject.SetActive(false);
+            return;
+        }
+
+        _totalBullets.text = totalBullets.Value.ToString();
+        _totalBullets.gameObject.SetActive(true);
     }
 
     private void HealthBarFiller()
@@ -72,6 +103,7 @@ public class UIController : MonoBehaviour
         UiElementEquipedParam objectEquiped = uiEvent as UiElementEquipedParam;
 
         SetCurrentObjectSprite(objectEquiped.ItemSpray());
+        SetCurrentBullets(objectEquiped.CurrentBullets());
+        SetTotalBullets(objectEquiped.TotalBullets());
     }
-
 }

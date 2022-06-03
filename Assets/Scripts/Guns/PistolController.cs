@@ -2,8 +2,18 @@ using UnityEngine;
 
 public class PistolController : MonoBehaviour, IGun
 {
+    private AudioSource _audioSource;
+
     [SerializeField]
     private Gun _gunData;
+
+    [SerializeField]
+    private GameEvent _pistolShootEvent;
+
+    void Awake()
+    {
+        _audioSource = gameObject.GetComponent<AudioSource>();
+    }
 
     private void Start()
     {
@@ -33,12 +43,11 @@ public class PistolController : MonoBehaviour, IGun
 
     public void Shoot()
     {
-        Debug.Log("shoot");
-
         Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
         Ray originRay = Camera.main.ScreenPointToRay(screenCenterPoint);
 
-        Debug.Log(originRay);
+        _audioSource.Play();
+        _pistolShootEvent.Raise();
 
         if (Physics.Raycast(originRay, out RaycastHit hitInfo, 50f, LayerMask.GetMask("Shooteable")))
         {

@@ -67,7 +67,15 @@ public class Inventory : MonoBehaviour
         _currentEquiped.transform.localEulerAngles = correctRotation;
         _currentEquiped.transform.localPosition = correctPosition;
 
-        _objectEquipedEvent.Raise(new UiElementEquipedParam(item.GetImage()));
+        if (isGunEquiped())
+        {
+            _objectEquipedEvent.Raise(new UiElementEquipedParam(item.GetImage(),0,12)); //cambiar al del arma
+        }
+        else
+        {
+            _objectEquipedEvent.Raise(new UiElementEquipedParam(item.GetImage(), null, null));
+        }
+        
 
         _currentEquiped.SetActive(true);
     }
