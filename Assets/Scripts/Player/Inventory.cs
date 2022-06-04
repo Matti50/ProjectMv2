@@ -69,7 +69,9 @@ public class Inventory : MonoBehaviour
 
         if (isGunEquiped(out var gun))
         {
-            _objectEquipedEvent.Raise(new UiElementEquipedParam(item.GetImage(),gun.CurrentBullets(),gun.TotalBullets(),item.GetName())); //cambiar al del arma
+            _objectEquipedEvent.Raise(new UiElementEquipedParam(item.GetImage(),gun.CurrentBullets(),gun.TotalBullets(),item.GetName()));
+            gun.SetPlayerPosition(gameObject.transform);
+            gun.SetPlayerSpeed(gameObject.GetComponent<PlayerMovementController>().GetSpeed());
         }
         else
         {

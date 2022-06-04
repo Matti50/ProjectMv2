@@ -6,7 +6,7 @@ public class LifeController : MonoBehaviour
     private int _maxLife = 100;
 
     [SerializeField]
-    private int _currentLife;
+    private float _currentLife;
 
     private const int _minLife = 0;
 
@@ -25,12 +25,12 @@ public class LifeController : MonoBehaviour
         return GetCurrentLife() == 0;
     }
 
-    public int GetCurrentLife()
+    public float GetCurrentLife()
     {
         return _currentLife;
     }
 
-    public void TakeDamage(int incomingDamage)
+    public void TakeDamage(float incomingDamage)
     {
         _currentLife = Mathf.Max(_minLife, _currentLife - incomingDamage);
     }

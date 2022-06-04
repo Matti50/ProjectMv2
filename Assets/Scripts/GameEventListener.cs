@@ -7,7 +7,7 @@ public class GameEventListener : MonoBehaviour
     private GameEvent _eventToListen;
 
     [SerializeField]
-    private UnityEvent _unityEvent;
+    private UnityEvent<GameEventParam> _unityEvent;
 
     private void Awake()
     {
@@ -19,8 +19,8 @@ public class GameEventListener : MonoBehaviour
         _eventToListen.UnregisterListener(this);
     }
 
-    public void RaiseEvent()
+    public void RaiseEvent(GameEventParam param = null)
     {
-        _unityEvent.Invoke();
+        _unityEvent.Invoke(param);
     }
 }

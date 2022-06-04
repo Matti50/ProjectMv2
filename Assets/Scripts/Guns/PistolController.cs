@@ -22,6 +22,13 @@ public class PistolController : MonoBehaviour, IGun
     [SerializeField]
     private AudioClip _reload;
 
+    [SerializeField]
+    private GameEvent _zombieDamagedEvent;
+
+    private Transform _playerPosition;
+
+    private float _playerSpeed;
+
     private int _currentBullets;
 
     private int _totalBullets = 24;
@@ -84,13 +91,12 @@ public class PistolController : MonoBehaviour, IGun
         _currentBullets--;
         _updateUIBullets.Raise(new BulletsUIParam { CurrentBullets = _currentBullets, TotalBullets = _totalBullets });
         _counterToShoot = Time.time + _timeToShoot;
-        if (Physics.Raycast(originRay, out RaycastHit hitInfo, 50f))
+        if (Physics.Raycast(originRay, out RaycastHit hitInfo, _gunData.ShotDistance))
         {
 
-            if(hitInfo.collider.gameObject.layer == 12)
+            if(hitInfo.collider.gameObject.layer == 7)
             {
-                //make the zombie get damage
-                //call the zombie damage animation
+                _zombieDamagedEvent.Raise(new GameEventParam { Damage = _gunData.ShootDamage, PlayerPosition = _playerPosition, PlayerSpeed = _playerSpeed });
             }
         }
     }
@@ -125,5 +131,14 @@ public class PistolController : MonoBehaviour, IGun
     public int CurrentBullets()
     {
         return _currentBullets;
+    }
+
+    public void SetPlayerPosition(Transform playerPosition)
+    {
+        _playerPosition = playerPosition;
+    }
+    public void SetPlayerSpeed(float playerSpeed)
+    {
+        _playerSpeed = playerSpeed;
     }
 }

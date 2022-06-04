@@ -2889,7 +2889,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9074247324113410407}
-  - component: {fileID: 8819326390167160442}
   - component: {fileID: 919132148024543438}
   - component: {fileID: 919132148024543440}
   - component: {fileID: 919132148024543441}
@@ -2898,6 +2897,9 @@ GameObject:
   - component: {fileID: 1892503865}
   - component: {fileID: 1892503866}
   - component: {fileID: 1892503867}
+  - component: {fileID: 1382764491}
+  - component: {fileID: 5751492520455115255}
+  - component: {fileID: 4405074540670707962}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -2921,20 +2923,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &8819326390167160442
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8549489545314419677}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.26507187
-  m_Height: 1.8066556
-  m_Direction: 1
-  m_Center: {x: 0.00207901, y: 0.8856579, z: 0}
 --- !u!95 &919132148024543438
 Animator:
   serializedVersion: 3
@@ -3055,6 +3043,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bae7c92db523ef4ca55a3342f0f8137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damageClip: {fileID: 8300000, guid: 667c52ca877447945bb17261d4493882, type: 3}
+  _changeUILifeEvent: {fileID: 11400000, guid: 21ce8cbdc38700646b073198a7326cf2, type: 2}
 --- !u!82 &1892503867
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3151,6 +3141,61 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &1382764491
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8549489545314419677}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4455318, y: 2.2460575, z: 0.26420826}
+  m_Center: {x: -0.011539685, y: 0.6230289, z: -0.019090213}
+--- !u!114 &5751492520455115255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8549489545314419677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aafc389cf47b7ce499c4f55e305c8fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventToListen: {fileID: 11400000, guid: 12a94bb04dff4c647bad44002fe4ac41, type: 2}
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1892503866}
+        m_TargetAssemblyTypeName: ListenToShoot, Assembly-CSharp
+        m_MethodName: GetDamaged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4405074540670707962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8549489545314419677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee7602e0d6b7a44d9a8c7c803e6d129, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxLife: 100
+  _currentLife: 0
 --- !u!1 &8574172197160872927
 GameObject:
   m_ObjectHideFlags: 0

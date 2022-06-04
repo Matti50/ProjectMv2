@@ -34,15 +34,13 @@ public class PlayerMovementController : MonoBehaviour
 
     private float _soundCounter;
 
-    //private LifeController _lifeController;
 
     private void Awake()
     {
-        //_rigidBody = gameObject.GetComponent<Rigidbody>();
+        //_rigidBody = gameObject.GetComponent<Rigidbody>(); //para cuando implemente el salto
         _animator = gameObject.GetComponentInChildren<Animator>();
         _audioSource = gameObject.GetComponent<AudioSource>();
         _soundCounter = Time.time;
-        //_lifeController = gameObject.GetComponent<LifeController>();
     }
 
     private void Start()
