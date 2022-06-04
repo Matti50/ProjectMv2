@@ -84,9 +84,14 @@ public class PistolController : MonoBehaviour, IGun
         _currentBullets--;
         _updateUIBullets.Raise(new BulletsUIParam { CurrentBullets = _currentBullets, TotalBullets = _totalBullets });
         _counterToShoot = Time.time + _timeToShoot;
-        if (Physics.Raycast(originRay, out RaycastHit hitInfo, 50f, LayerMask.GetMask("Shooteable")))
+        if (Physics.Raycast(originRay, out RaycastHit hitInfo, 50f))
         {
-            //hit shooteables
+
+            if(hitInfo.collider.gameObject.layer == 12)
+            {
+                //make the zombie get damage
+                //call the zombie damage animation
+            }
         }
     }
 

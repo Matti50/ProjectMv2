@@ -145,6 +145,9 @@ MonoBehaviour:
   _gunData: {fileID: 11400000, guid: a2d15907c21fac749bbb8082bdf9c825, type: 2}
   _pistolShootEvent: {fileID: 11400000, guid: f9f2d7466c7973044a5e742b9abb43eb, type: 2}
   _updateUIBullets: {fileID: 11400000, guid: 91bf431e3b6da7641938b08797b59a95, type: 2}
+  _fire: {fileID: 8300000, guid: 264fc48b16e620b47b8f1206a1b636a2, type: 3}
+  _noBullets: {fileID: 8300000, guid: a2cbf4c22e863e448be9d0dac8982c9d, type: 3}
+  _reload: {fileID: 8300000, guid: cb03008e086d539409774c1eaab3ccf8, type: 3}
 --- !u!54 &9936186
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -217,7 +220,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

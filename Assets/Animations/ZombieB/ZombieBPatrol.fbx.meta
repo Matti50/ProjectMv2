@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 6a451ffd1c3e4894bbff1d2141ebf6f5
+guid: 83e2f19e40fa6ec419670d3098992cd9
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: ZombieBIdle
+    second: Patrol
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: ZombieBIdle
+      name: Patrol
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 127
+      lastFrame: 121
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -51,7 +51,7 @@ ModelImporter:
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
