@@ -1,4 +1,4 @@
 public abstract class UIEventParam
 {
-    public string Name;
+    protected string _name;
 }

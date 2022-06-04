@@ -32,4 +32,9 @@ public class HealController :MonoBehaviour, IPickeable
     {
         return heal.Image;
     }
+
+    public string GetName()
+    {
+        return heal.Name;
+    }
 }

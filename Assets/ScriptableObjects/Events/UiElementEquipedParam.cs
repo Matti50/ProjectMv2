@@ -6,11 +6,12 @@ public class UiElementEquipedParam : UIEventParam
     private int? _currentBullets;
     private int? _totalBullets;
 
-    public UiElementEquipedParam(Sprite sprite, int? currentBullets, int? totalBullets)
+    public UiElementEquipedParam(Sprite sprite, int? currentBullets, int? totalBullets, string itemName)
     {
         _itemSprite = sprite;
         _currentBullets = currentBullets;
         _totalBullets = totalBullets;
+        _name = itemName;
     }
 
     public Sprite ItemSpray()
@@ -26,5 +27,10 @@ public class UiElementEquipedParam : UIEventParam
     public int? TotalBullets()
     {
         return _totalBullets;
+    }
+
+    public string ItemName()
+    {
+        return _name;
     }
 }

@@ -32,7 +32,7 @@ public class AimGun : MonoBehaviour
         var hInput = Input.GetAxis("Horizontal");
         var vInput = Input.GetAxis("Vertical");
 
-        if(rightMouseInput && hInput == 0 && vInput == 0 && _inventory.isGunEquiped()) 
+        if(rightMouseInput && hInput == 0 && vInput == 0 && _inventory.isGunEquiped(out var gun)) 
         {
             _crossHair.gameObject.SetActive(true);   
             _rotationController.IsAiming(true);

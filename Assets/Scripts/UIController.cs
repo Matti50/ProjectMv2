@@ -21,6 +21,9 @@ public class UIController : MonoBehaviour
     private TextMeshProUGUI _totalBullets;
 
     [SerializeField]
+    private TextMeshProUGUI _itemName;
+
+    [SerializeField]
     private GameObject _item;
 
     private void Start()
@@ -71,6 +74,11 @@ public class UIController : MonoBehaviour
         _totalBullets.gameObject.SetActive(true);
     }
 
+    private void SetItemName(string itemName)
+    {
+        _itemName.text = itemName;
+    }
+
     private void HealthBarFiller()
     {
         _healthBar.fillAmount = Mathf.Lerp(_healthBar.fillAmount, _health / _maxHealth, _lerpSpeed);
@@ -105,5 +113,6 @@ public class UIController : MonoBehaviour
         SetCurrentObjectSprite(objectEquiped.ItemSpray());
         SetCurrentBullets(objectEquiped.CurrentBullets());
         SetTotalBullets(objectEquiped.TotalBullets());
+        SetItemName(objectEquiped.ItemName());
     }
 }

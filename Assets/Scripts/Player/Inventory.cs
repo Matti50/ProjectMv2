@@ -67,16 +67,15 @@ public class Inventory : MonoBehaviour
         _currentEquiped.transform.localEulerAngles = correctRotation;
         _currentEquiped.transform.localPosition = correctPosition;
 
-        if (isGunEquiped())
+        if (isGunEquiped(out var gun))
         {
-            _objectEquipedEvent.Raise(new UiElementEquipedParam(item.GetImage(),0,12)); //cambiar al del arma
+            _objectEquipedEvent.Raise(new UiElementEquipedParam(item.GetImage(),gun.CurrentBullets(),gun.TotalBullets(),item.GetName())); //cambiar al del arma
         }
         else
         {
-            _objectEquipedEvent.Raise(new UiElementEquipedParam(item.GetImage(), null, null));
+            _objectEquipedEvent.Raise(new UiElementEquipedParam(item.GetImage(), null, null, item.GetName()));
         }
         
-
         _currentEquiped.SetActive(true);
     }
 
@@ -106,24 +105,26 @@ public class Inventory : MonoBehaviour
         return _ammountOfItems < _capacity;
     }
 
-    public bool isGunEquiped()
+    public bool isGunEquiped(out IGun gun)
     {
         bool isSomethingEquiped = _currentEquiped != null;
 
         if (isSomethingEquiped)
         {
             var isGun = _currentEquiped.TryGetComponent(out IGun component); //TODO: intentar optimizar
+            gun = component;
             return isGun;
         }
         else 
-        { 
+        {
+            gun = null;
             return false; 
         }
     }
 
     public IGun GetEquipedGun()
     {
-        if (!isGunEquiped()) return null;
+        if (!isGunEquiped(out var gun)) return null;
 
         return _currentEquiped.GetComponent<IGun>();
     }

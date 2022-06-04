@@ -7,4 +7,6 @@ public interface IPickeable
     public (Vector3, Vector3) GetOkRotationAndPosition();
 
     public Sprite GetImage();
+
+    public string GetName();
 }

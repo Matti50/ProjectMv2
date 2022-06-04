@@ -10,6 +10,8 @@ public class PistolController : MonoBehaviour, IGun
     [SerializeField]
     private GameEvent _pistolShootEvent;
 
+    private int _currentBullets;
+
     void Awake()
     {
         _audioSource = gameObject.GetComponent<AudioSource>();
@@ -43,15 +45,35 @@ public class PistolController : MonoBehaviour, IGun
 
     public void Shoot()
     {
+        if (_currentBullets == 0) return;
+
         Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
         Ray originRay = Camera.main.ScreenPointToRay(screenCenterPoint);
 
         _audioSource.Play();
         _pistolShootEvent.Raise();
+        _currentBullets--;
 
         if (Physics.Raycast(originRay, out RaycastHit hitInfo, 50f, LayerMask.GetMask("Shooteable")))
         {
             //hit shooteables
         }
+    }
+
+    //reload
+
+    public string GetName()
+    {
+        return GunData.Name;
+    } 
+
+    public int TotalBullets()
+    {
+        return GunData.BulletsInMagazine;
+    }
+
+    public int CurrentBullets()
+    {
+        return _currentBullets;
     }
 }
