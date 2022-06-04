@@ -28,8 +28,11 @@ public class PlayerMovementController : MonoBehaviour
     private static int IsRunningParameterId = Animator.StringToHash("isRunning");
 
     private Animator _animator;
+    private AudioSource _audioSource;
 
-    private GameManager _gameManager;
+    private float _timeToPlaySound = 0.7f;
+
+    private float _soundCounter;
 
     //private LifeController _lifeController;
 
@@ -37,14 +40,14 @@ public class PlayerMovementController : MonoBehaviour
     {
         //_rigidBody = gameObject.GetComponent<Rigidbody>();
         _animator = gameObject.GetComponentInChildren<Animator>();
-        //_gameManager = FindObjectOfType<GameManager>();
+        _audioSource = gameObject.GetComponent<AudioSource>();
+        _soundCounter = Time.time;
         //_lifeController = gameObject.GetComponent<LifeController>();
     }
 
     private void Start()
     {
         _jumpForce = 6f;
-        //UIController.Instance.SetLife(_lifeController.GetCurrentLife());
     }
 
     void Update()
@@ -76,8 +79,13 @@ public class PlayerMovementController : MonoBehaviour
         _animator.SetBool(IsRunningParameterId, _isSprinting);
 
         direction.Normalize();
-
         transform.Translate(direction * _currentSpeed * Time.deltaTime, Space.Self);
+
+        if (_soundCounter < Time.time)
+        {
+            _audioSource.Play();
+            _soundCounter = Time.time + _timeToPlaySound;
+        }
     }
 
     private void Jump()
@@ -97,13 +105,5 @@ public class PlayerMovementController : MonoBehaviour
     public float GetSpeed()
     {
         return _currentSpeed;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.layer == (int)Layers.ScapePoint)
-        {
-            _gameManager.FinishedLevel1();
-        }
     }
 }

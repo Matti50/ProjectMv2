@@ -2895,6 +2895,8 @@ GameObject:
   - component: {fileID: 919132148024543441}
   - component: {fileID: 2672581174806255613}
   - component: {fileID: 1120480284}
+  - component: {fileID: 1892503865}
+  - component: {fileID: 1892503866}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -3012,6 +3014,46 @@ MonoBehaviour:
   _mainCamera: {fileID: 0}
   _aimCamera: {fileID: 0}
   _crossHair: {fileID: 0}
+--- !u!114 &1892503865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8549489545314419677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aafc389cf47b7ce499c4f55e305c8fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventToListen: {fileID: 11400000, guid: f9f2d7466c7973044a5e742b9abb43eb, type: 2}
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1892503866}
+        m_TargetAssemblyTypeName: ListenToShoot, Assembly-CSharp
+        m_MethodName: PlayShootAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1892503866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8549489545314419677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bae7c92db523ef4ca55a3342f0f8137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8574172197160872927
 GameObject:
   m_ObjectHideFlags: 0

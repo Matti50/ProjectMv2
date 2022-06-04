@@ -115,4 +115,12 @@ public class UIController : MonoBehaviour
         SetTotalBullets(objectEquiped.TotalBullets());
         SetItemName(objectEquiped.ItemName());
     }
+
+    public void OnBulletsChanged(UIEventParam uiEvent)
+    {
+        BulletsUIParam bullets = uiEvent as BulletsUIParam;
+
+        SetCurrentBullets(bullets.CurrentBullets);
+        SetTotalBullets(bullets.TotalBullets);
+    }
 }

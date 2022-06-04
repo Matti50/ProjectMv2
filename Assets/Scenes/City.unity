@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 607627885}
   - component: {fileID: 607627884}
   m_Layer: 0
-  m_Name: TestGameManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -477,10 +477,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 607627883}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c714629e8db28c64abde45b6765832df, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a15e44c4e862e34b9c9fb2f230435a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lifeChange: {fileID: 11400000, guid: 21ce8cbdc38700646b073198a7326cf2, type: 2}
+  _dontDestroyOnLoad: 1
+  _reloadButton: 114
+  _reloadButtonPressed: {fileID: 11400000, guid: a05da119d47ff5c4b9bad6c6f2fbcd7a, type: 2}
+  _mission: {fileID: 0}
 --- !u!4 &607627885
 Transform:
   m_ObjectHideFlags: 0
@@ -1253,6 +1256,7 @@ GameObject:
   - component: {fileID: 1081044630}
   - component: {fileID: 1081044631}
   - component: {fileID: 1081044632}
+  - component: {fileID: 1081044633}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -1408,6 +1412,34 @@ MonoBehaviour:
       - m_Target: {fileID: 1081044630}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: OnItemEquiped
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1081044633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081044625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42905dc852f39024998121deac64058c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventToListen: {fileID: 11400000, guid: 91bf431e3b6da7641938b08797b59a95, type: 2}
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1081044630}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: OnBulletsChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1831,9 +1863,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2826396132474494449, guid: b26fb949fa572874a95d59d784462375, type: 3}
-      propertyPath: _pistolShootEvent
+      propertyPath: _fire
       value: 
-      objectReference: {fileID: 11400000, guid: f9f2d7466c7973044a5e742b9abb43eb, type: 2}
+      objectReference: {fileID: 8300000, guid: 264fc48b16e620b47b8f1206a1b636a2, type: 3}
+    - target: {fileID: 2826396132474494449, guid: b26fb949fa572874a95d59d784462375, type: 3}
+      propertyPath: _reload
+      value: 
+      objectReference: {fileID: 8300000, guid: cb03008e086d539409774c1eaab3ccf8, type: 3}
+    - target: {fileID: 2826396132474494449, guid: b26fb949fa572874a95d59d784462375, type: 3}
+      propertyPath: _noBullets
+      value: 
+      objectReference: {fileID: 8300000, guid: a2cbf4c22e863e448be9d0dac8982c9d, type: 3}
     - target: {fileID: 6201896614402978886, guid: b26fb949fa572874a95d59d784462375, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1884,22 +1924,58 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b26fb949fa572874a95d59d784462375, type: 3}
---- !u!1 &1845231086 stripped
+--- !u!1 &1870823070
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 6726760118116921084, guid: b26fb949fa572874a95d59d784462375, type: 3}
-  m_PrefabInstance: {fileID: 1845231085}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &1845231087
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1870823071}
+  m_Layer: 5
+  m_Name: TotalBullets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1870823071
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870823070}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 909943359}
+  m_Father: {fileID: 454292646}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 46, y: -133.95}
+  m_SizeDelta: {x: 80.0923, y: 78.102}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1892503857 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8549489545314419677, guid: faddf931cd1bb2242beed7471a8886f2, type: 3}
+  m_PrefabInstance: {fileID: 8819326390630664976}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1892503867
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1845231086}
+  m_GameObject: {fileID: 1892503857}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 264fc48b16e620b47b8f1206a1b636a2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: afcf99c6b78e9784ca28f85d9a32c1a3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1985,87 +2061,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &1870823070
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1870823071}
-  m_Layer: 5
-  m_Name: TotalBullets
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1870823071
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1870823070}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 909943359}
-  m_Father: {fileID: 454292646}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 46, y: -133.95}
-  m_SizeDelta: {x: 80.0923, y: 78.102}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1892503857 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8549489545314419677, guid: faddf931cd1bb2242beed7471a8886f2, type: 3}
-  m_PrefabInstance: {fileID: 8819326390630664976}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1892503865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1892503857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aafc389cf47b7ce499c4f55e305c8fc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _eventToListen: {fileID: 11400000, guid: f9f2d7466c7973044a5e742b9abb43eb, type: 2}
-  _unityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1892503866}
-        m_TargetAssemblyTypeName: ListenToShoot, Assembly-CSharp
-        m_MethodName: PlayShootAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1892503866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1892503857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bae7c92db523ef4ca55a3342f0f8137, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1899480601
 GameObject:
   m_ObjectHideFlags: 0

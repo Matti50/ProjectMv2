@@ -38,11 +38,11 @@ public class PlayerShootController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && _currentGun != null && _timeToShoot <= Time.time)
         {
             _timeToShoot = Time.time + _currentGun.GunData.Recoil;
-            Shoot();
+            //Shoot();
         }
     }
 
-    private void Shoot()
+    /*private void Shoot()
     {
         if (_totalBullets == 0) return;
 
@@ -58,7 +58,7 @@ public class PlayerShootController : MonoBehaviour
                 lifeController.TakeDamage(_currentGun.GunData.ShootDamage);
             }
         }
-    }
+    }*/
 
     private void OnTriggerEnter(Collider other)
     {
