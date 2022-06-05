@@ -31,7 +31,7 @@ public class PistolController : MonoBehaviour, IGun
 
     private int _currentBullets;
 
-    private int _totalBullets = 24;
+    private int _totalBullets = 64;
 
     private float _counterToShoot;
 
@@ -93,10 +93,10 @@ public class PistolController : MonoBehaviour, IGun
         _counterToShoot = Time.time + _timeToShoot;
         if (Physics.Raycast(originRay, out RaycastHit hitInfo, _gunData.ShotDistance))
         {
-
             if(hitInfo.collider.gameObject.layer == 7)
             {
-                _zombieDamagedEvent.Raise(new GameEventParam { Damage = _gunData.ShootDamage, PlayerPosition = _playerPosition, PlayerSpeed = _playerSpeed });
+                var zombieId = hitInfo.collider.gameObject.GetComponentInParent<ChasePlayerController>().GetId();
+                _zombieDamagedEvent.Raise(new GameEventParam { Damage = _gunData.ShootDamage, PlayerPosition = _playerPosition, PlayerSpeed = _playerSpeed, ZombieId = zombieId});
             }
         }
     }

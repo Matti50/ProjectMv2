@@ -11,12 +11,19 @@ public class GameManager : MonoBehaviour
     private KeyCode _reloadButton;
 
     [SerializeField]
+    private KeyCode _hintButton;
+
+    [SerializeField]
     private GameEvent _reloadButtonPressed;
+
+    [SerializeField]
+    private GameEvent _showHint;
 
     [SerializeField]
     private Mission _mission;
 
-    //will implement kind of observer pattern to easily pause the game
+    [SerializeField]
+    private UIEvent _loadFirstMission;
 
     private void Awake()
     {
@@ -35,9 +42,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        _loadFirstMission.Raise(new UIMissionChanged { MissionDescription = _mission.Description });
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(_reloadButton)) _reloadButtonPressed.Raise();
+
+        if (Input.GetKeyDown(_hintButton)) _showHint.Raise();
     }
 
     public void QuitGame()

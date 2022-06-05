@@ -66,6 +66,9 @@ public class ChasePlayerController : MonoBehaviour
 
     private bool _jobDone;
 
+    [SerializeField]
+    private int _zombieId;
+
     private void Awake()
     {
         _lifeController = GetComponent<LifeController>();
@@ -183,7 +186,13 @@ public class ChasePlayerController : MonoBehaviour
 
     public void GetDamage(GameEventParam gameParam)
     {
+        if(gameParam.ZombieId != _zombieId)
+        {
+            return;
+        }
+
         _lifeController.TakeDamage(gameParam.Damage);
+
         if (_lifeController.DidIDie())
         {
             gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
@@ -208,5 +217,10 @@ public class ChasePlayerController : MonoBehaviour
         _animator.SetFloat(_zombieWalkSpeedId, 0);
         _animator.SetBool(_zombieAttackId, false);
         _jobDone = true;
+    }
+
+    public int GetId()
+    {
+        return _zombieId;
     }
 }

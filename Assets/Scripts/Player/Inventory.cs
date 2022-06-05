@@ -40,7 +40,7 @@ public class Inventory : MonoBehaviour
     {
         if (other.gameObject.layer == 11)
         {
-            if (Input.GetKeyDown(KeyCode.E)) //mover esto a un input controller como action button pressed, posiblemente un evento
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 if (!AbleToPick()) return;
 

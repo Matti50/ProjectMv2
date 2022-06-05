@@ -26,10 +26,18 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private GameObject _item;
 
+    [SerializeField]
+    private TextMeshProUGUI _missionText;
+
+
+    private float _timeToHideHint = 5f;
+    private float _counterToHideHint;
+
     private void Start()
     {
         _item.gameObject.SetActive(false);
         _health = _maxHealth;
+        _counterToHideHint = Time.time + _timeToHideHint;
     }
 
     private void Update()
@@ -37,6 +45,7 @@ public class UIController : MonoBehaviour
         _lerpSpeed = 3f * Time.deltaTime;
         HealthBarFiller();
         ColorChanger();
+        HideHint();
     }
 
     private void SetLife(float lifeChangeAmmount)
@@ -77,6 +86,11 @@ public class UIController : MonoBehaviour
     private void SetItemName(string itemName)
     {
         _itemName.text = itemName;
+    }
+
+    private void SetMission(string missionText)
+    {
+        _missionText.text = missionText;
     }
 
     private void HealthBarFiller()
@@ -122,5 +136,27 @@ public class UIController : MonoBehaviour
 
         SetCurrentBullets(bullets.CurrentBullets);
         SetTotalBullets(bullets.TotalBullets);
+    }
+
+    public void OnMissionChanged(UIEventParam uiEvent)
+    {
+        UIMissionChanged missionChanged = uiEvent as UIMissionChanged;
+
+        SetMission(missionChanged.MissionDescription);
+        ShowHint();
+    }
+
+    private void HideHint()
+    {
+        if(_missionText.gameObject.activeSelf == true && _counterToHideHint <= Time.time)
+        {
+            _missionText.gameObject.SetActive(false);
+        }
+    }
+
+    public void ShowHint()
+    {
+        _missionText.gameObject.SetActive(true);
+        _counterToHideHint = Time.time + _timeToHideHint;
     }
 }

@@ -7,15 +7,6 @@ public class HealController :MonoBehaviour, IPickeable
 
     public GameObject GetItem => gameObject;
 
-    void Start()
-    {
-        
-    }
-    void Update()
-    {
-        
-    }
-
     public (Vector3, Vector3) GetOkRotationAndPosition()
     {
         // first rotation, then position
