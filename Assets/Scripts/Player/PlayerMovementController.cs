@@ -34,10 +34,12 @@ public class PlayerMovementController : MonoBehaviour
 
     private float _soundCounter;
 
+    private bool _movementCancelled = false;
+
 
     private void Awake()
     {
-        //_rigidBody = gameObject.GetComponent<Rigidbody>(); //para cuando implemente el salto
+        _rigidBody = gameObject.GetComponent<Rigidbody>();
         _animator = gameObject.GetComponentInChildren<Animator>();
         _audioSource = gameObject.GetComponent<AudioSource>();
         _soundCounter = Time.time;
@@ -97,7 +99,11 @@ public class PlayerMovementController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == (int)Layers.Floor) _isGrounded = true;
+        if(collision.collider.gameObject.layer == 14)
+        {
+            var angle = transform.eulerAngles + 180f * Vector3.up;
+            transform.eulerAngles = angle;
+        }
     }
 
     public float GetSpeed()

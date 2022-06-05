@@ -2900,6 +2900,7 @@ GameObject:
   - component: {fileID: 1382764491}
   - component: {fileID: 5751492520455115255}
   - component: {fileID: 4405074540670707962}
+  - component: {fileID: 1639867624}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -2969,7 +2970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 706a777166ffb20478987f3e10eb9f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 2
+  _walkSpeed: 1
   _sprintMultiplier: 1.5
   _currentSpeed: 0
   _jumpForce: 5
@@ -3045,6 +3046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageClip: {fileID: 8300000, guid: 667c52ca877447945bb17261d4493882, type: 3}
   _changeUILifeEvent: {fileID: 11400000, guid: 21ce8cbdc38700646b073198a7326cf2, type: 2}
+  _playerDiedEvent: {fileID: 11400000, guid: 257f05174bc7f194f9885ea140df3c76, type: 2}
 --- !u!82 &1892503867
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3196,6 +3198,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxLife: 100
   _currentLife: 0
+--- !u!54 &1639867624
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8549489545314419677}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 2
 --- !u!1 &8574172197160872927
 GameObject:
   m_ObjectHideFlags: 0
