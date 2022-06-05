@@ -589,6 +589,7 @@ GameObject:
   - component: {fileID: 919132147740361039}
   - component: {fileID: 4888957793135911594}
   - component: {fileID: 840893128}
+  - component: {fileID: 840893136}
   m_Layer: 7
   m_Name: ZombieB
   m_TagString: Untagged
@@ -641,9 +642,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1237622362823441093}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 5
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -704,6 +705,13 @@ MonoBehaviour:
   _timeToPlayDefaultSound: 17
   _timeToMakeDamage: 3
   _damagePlayerEvent: {fileID: 11400000, guid: 12a94bb04dff4c647bad44002fe4ac41, type: 2}
+  _colliders:
+  - {fileID: 1201087018}
+  - {fileID: 3055482831519073922}
+  - {fileID: 7341406555286660702}
+  - {fileID: 6100590621127644767}
+  - {fileID: 7311561061348927372}
+  _painClip: {fileID: 8300000, guid: 67e88c02ac197f14ea8f2650653437ac, type: 3}
 --- !u!82 &4888957793135911594
 AudioSource:
   m_ObjectHideFlags: 0
@@ -814,6 +822,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxLife: 100
   _currentLife: 0
+--- !u!114 &840893136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237622362823441093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aafc389cf47b7ce499c4f55e305c8fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventToListen: {fileID: 11400000, guid: 54c73a5dc4870b14c9fe3751b519e353, type: 2}
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 919132147740361039}
+        m_TargetAssemblyTypeName: ChasePlayerController, Assembly-CSharp
+        m_MethodName: GetDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1309209696578000420
 GameObject:
   m_ObjectHideFlags: 0

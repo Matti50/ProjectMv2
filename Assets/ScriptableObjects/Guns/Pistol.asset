@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Pistol
   Image: {fileID: 21300000, guid: 69a19930902281a4092290f53ffbbc3f, type: 3}
-  ShootDamage: 10
+  ShootDamage: 20
   ShotDistance: 50
   Recoil: 0.8
   BulletsInMagazine: 12

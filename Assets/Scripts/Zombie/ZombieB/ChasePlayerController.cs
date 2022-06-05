@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ChasePlayerController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class ChasePlayerController : MonoBehaviour
     private Animator _animator;
     private static int _zombieWalkSpeedId = Animator.StringToHash("speed");
     private static int _zombieAttackId = Animator.StringToHash("isAttacking");
+    private static int _zombieDead = Animator.StringToHash("isDead");
 
     [SerializeField]
     private float _chaseSpeed;
@@ -56,6 +58,14 @@ public class ChasePlayerController : MonoBehaviour
 
     private LifeController _lifeController;
 
+    [SerializeField]
+    private List<Collider> _colliders;
+
+    [SerializeField]
+    private AudioClip _painClip;
+
+    private bool _jobDone;
+
     private void Awake()
     {
         _lifeController = GetComponent<LifeController>();
@@ -72,11 +82,12 @@ public class ChasePlayerController : MonoBehaviour
         _counterToPlayDefaultSound = Time.time;
         _counterToMakeDamage = Time.time;
         _playerDetected = false;
+        _jobDone = false;
     }
 
     void Update()
     {
-        if (!_playerDetected) return;
+        if (!_playerDetected || _jobDone) return;
 
         var distanceToPlayer = DistanceToPlayer();
 
@@ -162,6 +173,7 @@ public class ChasePlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (_lifeController.DidIDie()) return;
         if (collision.gameObject.tag == "Player" && _counterToMakeDamage <= Time.time)
         {
             _counterToMakeDamage = _timeToMakeDamage + Time.time;
@@ -172,10 +184,29 @@ public class ChasePlayerController : MonoBehaviour
     public void GetDamage(GameEventParam gameParam)
     {
         _lifeController.TakeDamage(gameParam.Damage);
+        if (_lifeController.DidIDie())
+        {
+            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+            _colliders.ForEach(col => col.enabled = false);
+            _animator.SetBool(_zombieDead, true);
+            this.enabled = false;
+            return;
+        }
+
+        _audioSource.clip = _painClip;
+        _audioSource.Play();
+
         if (!_playerDetected)
         {
             OnPlayerDetectedHandler(gameParam.PlayerPosition, gameParam.PlayerSpeed.Value);
             gameObject.GetComponent<ZombieBWalkController>().enabled = false;
-        }   
+        }
+    }
+
+    public void OnPlayerDied()
+    {
+        _animator.SetFloat(_zombieWalkSpeedId, 0);
+        _animator.SetBool(_zombieAttackId, false);
+        _jobDone = true;
     }
 }
