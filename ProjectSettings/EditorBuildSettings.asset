@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Road.unity
     guid: 02e1277f79eaf074c9080017747692cf
+  - enabled: 1
+    path: Assets/Scenes/Yard.unity
+    guid: 452ccdf223cabcc4993b3675ecbe4ff6
   m_configObjects: {}

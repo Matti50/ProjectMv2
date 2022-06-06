@@ -2,31 +2,22 @@ using UnityEngine;
 
 public class PlayerRotationController : MonoBehaviour
 {
-    private static int IsTurningId = Animator.StringToHash("isTurning");
-    private static int IsTurningLeftId = Animator.StringToHash("isTurningLeft");
-
     [SerializeField]
     private Transform _followTarget;
 
     [SerializeField]
     private float _mouseRotationSpeed;
 
-    [SerializeField]
-    private float _keyboardRotationSpeed;
-
     private bool _isAiming = false;
 
-    private Animator _animator;
-
-    private void Awake()
+    private void Start()
     {
-        _animator = GetComponent<Animator>();
+        Cursor.visible = false;
     }
 
     void Update()
     {
         MouseInputCameraRotate();
-        HorizontalInputRotate();
     }
 
     private void MouseInputCameraRotate()
@@ -62,25 +53,6 @@ public class PlayerRotationController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, _followTarget.rotation.eulerAngles.y, 0);
             _followTarget.localEulerAngles = new Vector3(angles.x, 0, 0);
         }
-    }
-
-    private void HorizontalInputRotate()
-    {
-        var xInput = Input.GetAxis("Horizontal");
-
-        bool isTurning = xInput != 0f;
-        if (isTurning)
-        {
-            _animator.SetBool(IsTurningId, isTurning);
-            _animator.SetBool(IsTurningLeftId, xInput < 0f);
-        }
-        else
-        {
-            _animator.SetBool(IsTurningId, false);
-        }
-
-        //need to smooth this
-        transform.Rotate(Vector3.up, xInput * _keyboardRotationSpeed * Time.deltaTime, Space.Self);
     }
 
     public void IsAiming(bool isAiming) 

@@ -13,16 +13,10 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField]
     private float _currentSpeed = 0f;
 
-    private bool _isSprinting = false;
-
-    [Header("Jump")]
-
     [SerializeField]
-    private float _jumpForce = 5f;
+    private Transform _cameraPosition;
 
-    private bool _isGrounded = true;
-
-    private Rigidbody _rigidBody;
+    private bool _isSprinting = false;
 
     private static int IsWalkingParameterId = Animator.StringToHash("isWalking");
     private static int IsRunningParameterId = Animator.StringToHash("isRunning");
@@ -34,20 +28,17 @@ public class PlayerMovementController : MonoBehaviour
 
     private float _soundCounter;
 
-    private bool _movementCancelled = false;
+    private CharacterController _controller;
 
+    private float _turnSmoothTime = 0.1f;
+    private float _turnSmoothVelocity;
 
     private void Awake()
     {
-        _rigidBody = gameObject.GetComponent<Rigidbody>();
+        _controller = GetComponent<CharacterController>();
         _animator = gameObject.GetComponentInChildren<Animator>();
         _audioSource = gameObject.GetComponent<AudioSource>();
         _soundCounter = Time.time;
-    }
-
-    private void Start()
-    {
-        _jumpForce = 6f;
     }
 
     void Update()
@@ -57,15 +48,11 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Move()
     {
-        var inputZ = Input.GetAxis("Vertical");
-        var direction = new Vector3(0f, 0f, inputZ);
+        var inputZ = Input.GetAxisRaw("Vertical");
+        var inputX = Input.GetAxisRaw("Horizontal");
+        var direction = new Vector3(inputX, 0f, inputZ);
+        direction.Normalize();
 
-        if (direction.magnitude == 0)
-        {
-            _animator.SetBool(IsWalkingParameterId, false);
-            _currentSpeed = 0;
-            return;
-        }
         _animator.SetBool(IsWalkingParameterId, true);
         _currentSpeed = _walkSpeed;
 
@@ -78,22 +65,27 @@ public class PlayerMovementController : MonoBehaviour
 
         _animator.SetBool(IsRunningParameterId, _isSprinting);
 
-        direction.Normalize();
-        transform.Translate(direction * _currentSpeed * Time.deltaTime, Space.Self);
+        if(direction.magnitude >= 0.1f)
+        {
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _cameraPosition.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f,angle,0f);
+
+            Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+
+            _controller.Move(moveDirection.normalized * _currentSpeed * Time.deltaTime);
+        }
+        else
+        {
+            _animator.SetBool(IsWalkingParameterId, false);
+            _currentSpeed = 0;
+            return;
+        }
 
         if (_soundCounter < Time.time)
         {
             _audioSource.Play();
             _soundCounter = Time.time + _timeToPlaySound;
-        }
-    }
-
-    private void Jump()
-    {
-        if (_isGrounded && Input.GetKeyDown(KeyCode.Space))
-        {
-            _isGrounded = false;
-            _rigidBody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         }
     }
 

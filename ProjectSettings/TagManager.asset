@@ -23,7 +23,7 @@ TagManager:
   - end
   - WinningLayer
   - PostProcess
-  - 
+  - HitPickeable
   - 
   - 
   - 

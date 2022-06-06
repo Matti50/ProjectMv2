@@ -36,19 +36,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    public void PickUpItem(IPickeable pickeable)
     {
-        if (other.gameObject.layer == 11)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                if (!AbleToPick()) return;
-
-                var item = other.GetComponent<IPickeable>();
-                PutOnInventory(item);
-                item.GetPickedUp();
-            }
-        }
+        if (!AbleToPick()) return;
+        PutOnInventory(pickeable);
+        pickeable.GetPickedUp();
     }
 
     private void PutOnInventory(IPickeable item)

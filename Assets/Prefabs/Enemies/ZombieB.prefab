@@ -583,7 +583,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1902553516356657279}
   - component: {fileID: 5514401021874813445}
-  - component: {fileID: 919132147740361038}
   - component: {fileID: 5028819608329967717}
   - component: {fileID: 8801864534087049877}
   - component: {fileID: 919132147740361039}
@@ -591,6 +590,7 @@ GameObject:
   - component: {fileID: 840893128}
   - component: {fileID: 840893136}
   - component: {fileID: 2906307996654649505}
+  - component: {fileID: 261348770}
   m_Layer: 7
   m_Name: ZombieB
   m_TagString: Untagged
@@ -635,22 +635,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!54 &919132147740361038
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1237622362823441093}
-  serializedVersion: 2
-  m_Mass: 5
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!114 &5028819608329967717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,7 +683,7 @@ MonoBehaviour:
   _rotationSpeed: 2
   _movementTowardsPlayerPredictionTime: 3
   _distanceToAttackPlayer: 0.75
-  _distanceToForgetPlayer: 30
+  _distanceToForgetPlayer: 100
   _damage: 10
   _attackSound: {fileID: 8300000, guid: b41705b8800d8464ba6cdf229ee6a701, type: 3}
   _timeToPlayAttackSound: 5
@@ -713,6 +697,7 @@ MonoBehaviour:
   - {fileID: 6100590621127644767}
   - {fileID: 7311561061348927372}
   _painClip: {fileID: 8300000, guid: 67e88c02ac197f14ea8f2650653437ac, type: 3}
+  _zombieId: 1
 --- !u!82 &4888957793135911594
 AudioSource:
   m_ObjectHideFlags: 0
@@ -879,6 +864,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!54 &261348770
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237622362823441093}
+  serializedVersion: 2
+  m_Mass: 20
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 2
 --- !u!1 &1309209696578000420
 GameObject:
   m_ObjectHideFlags: 0

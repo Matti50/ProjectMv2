@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WinningZoneController : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class WinningZoneController : MonoBehaviour
         if (other.gameObject.layer == 8)
         {
             Debug.Log("hola");
-            //take to next level
+            SceneManager.LoadScene("Yard");
         }
     }
 }

@@ -9,7 +9,7 @@ public class AimGun : MonoBehaviour
     private Inventory _inventory;
 
     [SerializeField]
-    private CinemachineVirtualCamera _mainCamera;
+    private CinemachineFreeLook _mainCamera;
 
     [SerializeField]
     private CinemachineVirtualCamera _aimCamera;
