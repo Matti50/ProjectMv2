@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private UIEvent _loadFirstMission;
 
+    private bool _gameStarted;
+
     private void Awake()
     {
         if(_instance == null)
@@ -49,6 +51,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (!_gameStarted) return;
+
         if (Input.GetKeyDown(_reloadButton)) _reloadButtonPressed.Raise();
 
         if (Input.GetKeyDown(_hintButton)) _showHint.Raise();
@@ -56,13 +60,14 @@ public class GameManager : MonoBehaviour
 
     public void QuitGame()
     {
-        if (Application.isEditor)
-        {
-            EditorApplication.ExitPlaymode();
-        }
-        else
-        {
-            Application.Quit();
-        }
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#endif
+        Application.Quit();
+    }
+
+    public void StartGame()
+    {
+        _gameStarted = true;
     }
 }
