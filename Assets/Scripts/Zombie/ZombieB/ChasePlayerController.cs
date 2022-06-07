@@ -69,6 +69,12 @@ public class ChasePlayerController : MonoBehaviour
     [SerializeField]
     private int _zombieId;
 
+    [SerializeField]
+    private GameEvent _gotKilled;
+
+    [Header("Testing")]
+    public bool killZombie = false;
+
     private void Awake()
     {
         _lifeController = GetComponent<LifeController>();
@@ -90,6 +96,9 @@ public class ChasePlayerController : MonoBehaviour
 
     void Update()
     {
+        //testing
+        if (killZombie && _gotKilled != null) _gotKilled.Raise();
+
         if (!_playerDetected || _jobDone) return;
 
         var distanceToPlayer = DistanceToPlayer();
@@ -195,6 +204,10 @@ public class ChasePlayerController : MonoBehaviour
 
         if (_lifeController.DidIDie())
         {
+            if(_gotKilled != null)
+            {
+                _gotKilled.Raise();
+            }
             gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
             _colliders.ForEach(col => col.enabled = false);
             _animator.SetBool(_zombieDead, true);

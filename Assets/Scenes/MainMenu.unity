@@ -2470,6 +2470,8 @@ MonoBehaviour:
   _showHint: {fileID: 11400000, guid: 8829a59a403e4554f9d1b482082a3da6, type: 2}
   _mission: {fileID: 11400000, guid: c4d1733be8a5ced4a812a81875a70d05, type: 2}
   _loadFirstMission: {fileID: 11400000, guid: 55354f06247e06346be97693afceb144, type: 2}
+  _level1FirstMission: {fileID: 11400000, guid: c4d1733be8a5ced4a812a81875a70d05, type: 2}
+  _level2FirstMission: {fileID: 11400000, guid: cf07608b3a862a4489e39e01ed0a8fd7, type: 2}
 --- !u!4 &2025845324
 Transform:
   m_ObjectHideFlags: 0

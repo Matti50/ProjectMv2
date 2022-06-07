@@ -44,6 +44,7 @@ public class PlayerMovementController : MonoBehaviour
     void Update()
     {
         Move();
+        ResetPlayerY();
     }
 
     private void Move()
@@ -101,5 +102,13 @@ public class PlayerMovementController : MonoBehaviour
     public float GetSpeed()
     {
         return _currentSpeed;
+    }
+
+    private void ResetPlayerY()
+    {
+        if(transform.position.y > 0.2)
+        {
+            transform.position.Set(transform.position.x, 0f,transform.position.z); 
+        }
     }
 }

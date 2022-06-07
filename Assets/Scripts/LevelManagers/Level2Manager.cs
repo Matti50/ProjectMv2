@@ -2,11 +2,22 @@ using UnityEngine;
 
 public class Level2Manager : MonoBehaviour
 {
-    [SerializeField]
-    private Mission _firstMission;
 
-    private void Start()
+    private int _zombieCount = 6;
+
+    private int _zombiesKilled = 0;
+
+    [SerializeField]
+    private GameEvent _ableToWin;
+
+    public void OnZombieKilled()
     {
-        GameManager._instance.ChangeMission(_firstMission);
+        _zombiesKilled++;
+
+        if(_zombiesKilled == _zombieCount)
+        {
+            _ableToWin.Raise();
+        }
     }
+    
 }

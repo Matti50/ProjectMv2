@@ -90,6 +90,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1804136457250423844}
+  - component: {fileID: 571532209}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -121,6 +122,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &571532209
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315688945611054750}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4856042, y: 1.8524396, z: 3.7225356}
+  m_Center: {x: 0.07463015, y: 0.4262197, z: -0.002051867}
 --- !u!1 &1608566593431291815
 GameObject:
   m_ObjectHideFlags: 0

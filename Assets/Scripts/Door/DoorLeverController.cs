@@ -5,6 +5,9 @@ public class DoorLeverController : MonoBehaviour
     [SerializeField]
     private GameEvent _leverTriggered;
 
+    [SerializeField]
+    private UIEvent _updateMission;
+
     private Animator _animator;
 
     private int _triggerLeverId = Animator.StringToHash("LeverActivate");
@@ -22,6 +25,7 @@ public class DoorLeverController : MonoBehaviour
             {
                 _animator.SetBool(_triggerLeverId, true);
                 _leverTriggered.Raise();
+                _updateMission.Raise(new UIMissionChanged { MissionDescription = "Despeja la zona y entra a la casa" });
                 this.enabled = false;
             }
         }
