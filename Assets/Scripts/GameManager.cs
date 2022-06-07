@@ -1,11 +1,17 @@
 using UnityEngine;
 using UnityEditor;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager _instance;
     
     public bool _dontDestroyOnLoad = true;
+
+    public static void ChangeLevelKey(string key)
+    {
+        LevelKey = key;
+    }
 
     [SerializeField]
     private KeyCode _reloadButton;
@@ -27,12 +33,25 @@ public class GameManager : MonoBehaviour
 
     private bool _gameStarted;
 
+    private Dictionary<string, Mission> _firstMissions;
+
+    private static string LevelKey;
+
+    [SerializeField]
+    private Mission _level1FirstMission;
+
+    [SerializeField]
+    private Mission _level2FirstMission;
+
+    //[SerializeField]
+    //private Mission _level3FirstMission;
+
     private void Awake()
     {
         if(_instance == null)
         {
             _instance = this;
-
+            LevelKey = "FirstLevel";
             if (_dontDestroyOnLoad)
             {
                 DontDestroyOnLoad(gameObject);
@@ -46,7 +65,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _loadFirstMission.Raise(new UIMissionChanged { MissionDescription = _mission.Description });
+        _firstMissions = new Dictionary<string, Mission>();
+        _firstMissions.Add("FirstLevel", _level1FirstMission);
+        _firstMissions.Add("SecondLevel", _level2FirstMission);
+        //_firstMissions.Add("", _level3FirstMission);
+        _loadFirstMission.Raise(new UIMissionChanged { MissionDescription = _firstMissions[LevelKey].Description });
     }
 
     private void Update()
@@ -64,6 +87,11 @@ public class GameManager : MonoBehaviour
         EditorApplication.ExitPlaymode();
 #endif
         Application.Quit();
+    }
+
+    public void ChangeMission(Mission mission)
+    {
+        _loadFirstMission.Raise(new UIMissionChanged { MissionDescription = mission.Description });
     }
 
     public void StartGame()

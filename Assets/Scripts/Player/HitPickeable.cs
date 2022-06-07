@@ -10,7 +10,6 @@ public class HitPickeable : MonoBehaviour
     {
         if(other.gameObject.layer == 11)
         {
-            Debug.Log("pick");
             if (Input.GetKeyDown(KeyCode.E))
             {
                 _inventory.PickUpItem(other.GetComponent<IPickeable>());
