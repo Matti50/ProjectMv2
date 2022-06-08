@@ -106,9 +106,9 @@ public class PlayerMovementController : MonoBehaviour
 
     private void ResetPlayerY()
     {
-        if(transform.position.y > 0.01f)
+        if(transform.position.y > 0.1f)
         {
-            transform.position.Set(transform.position.x, 0f,transform.position.z); 
+            transform.position = new Vector3(transform.position.x, 0f,transform.position.z); 
         }
     }
 }

@@ -25,6 +25,9 @@ public class PistolController : MonoBehaviour, IGun
     [SerializeField]
     private GameEvent _zombieDamagedEvent;
 
+    [SerializeField]
+    private GameObject _bulletImpact;
+
     private Transform _playerPosition;
 
     private float _playerSpeed;
@@ -93,7 +96,9 @@ public class PistolController : MonoBehaviour, IGun
         _counterToShoot = Time.time + _timeToShoot;
         if (Physics.Raycast(originRay, out RaycastHit hitInfo, _gunData.ShotDistance))
         {
-            if(hitInfo.collider.gameObject.layer == 7)
+            GameObject impact = Instantiate(_bulletImpact, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+            Destroy(impact, 2f);
+            if (hitInfo.collider.gameObject.layer == 7)
             {
                 var zombieId = hitInfo.collider.gameObject.GetComponentInParent<ChasePlayerController>().GetId();
                 _zombieDamagedEvent.Raise(new GameEventParam { Damage = _gunData.ShootDamage, PlayerPosition = _playerPosition, PlayerSpeed = _playerSpeed, ZombieId = zombieId});

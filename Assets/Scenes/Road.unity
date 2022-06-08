@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 7.610651, z: -4.390224}
+  m_FollowOffset: {x: 0, y: 8, z: -4}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -602,7 +602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 7.610651, z: -4.390224}
+  m_FollowOffset: {x: 0, y: 8, z: -4}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -2122,7 +2122,7 @@ MonoBehaviour:
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
     m_InputAxisValue: 0
-    m_InvertInput: 1
+    m_InvertInput: 0
     m_MinValue: -180
     m_MaxValue: 180
     m_Wrap: 1
@@ -4741,6 +4741,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2826396132474494449, guid: b26fb949fa572874a95d59d784462375, type: 3}
+      propertyPath: _muzzleFlash
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826396132474494449, guid: b26fb949fa572874a95d59d784462375, type: 3}
+      propertyPath: _bulletImpact
+      value: 
+      objectReference: {fileID: 100002, guid: d39ab699aa314a147969fd483aa55205, type: 3}
     - target: {fileID: 6201896614402978886, guid: b26fb949fa572874a95d59d784462375, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -7092,6 +7100,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2968838975600592321, guid: 40516566e8661d74fbe61ab8da30f812, type: 3}
+      propertyPath: m_SkinWidth
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 2968838975600592382, guid: 40516566e8661d74fbe61ab8da30f812, type: 3}
       propertyPath: m_Name
       value: PlayerModified
@@ -7959,7 +7971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 7.610651, z: -4.390224}
+  m_FollowOffset: {x: 0, y: 8, z: -4}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
