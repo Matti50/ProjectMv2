@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ListenToShoot : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class ListenToShoot : MonoBehaviour
 
     [SerializeField]
     private GameEvent _playerDiedEvent;
+
+    private bool _deathEventTriggered = false;
 
     private void Awake()
     {
@@ -51,9 +54,16 @@ public class ListenToShoot : MonoBehaviour
             gameObject.GetComponent<PlayerMovementController>().enabled = false;
             gameObject.GetComponent<PlayerRotationController>().enabled = false;
             gameObject.GetComponent<AimGun>().enabled = false;
-            this.enabled = false;
-            //go to main menu.
-            //show death screen
+
+            if(!_deathEventTriggered)
+                _playerDiedEvent.Raise();
+
+
+            if (Input.anyKey)
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
+
             return;
         }
 

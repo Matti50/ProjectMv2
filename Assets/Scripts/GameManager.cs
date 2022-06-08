@@ -43,8 +43,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Mission _level2FirstMission;
 
-    //[SerializeField]
-    //private Mission _level3FirstMission;
+    [SerializeField]
+    private Mission _level3FirstMission;
 
     private void Awake()
     {
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         _firstMissions = new Dictionary<string, Mission>();
         _firstMissions.Add("FirstLevel", _level1FirstMission);
         _firstMissions.Add("SecondLevel", _level2FirstMission);
-        //_firstMissions.Add("", _level3FirstMission);
+        _firstMissions.Add("ThirdLevel", _level3FirstMission);
         _loadFirstMission.Raise(new UIMissionChanged { MissionDescription = _firstMissions[LevelKey].Description });
     }
 

@@ -29,6 +29,9 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _missionText;
 
+    [SerializeField]
+    private GameObject _deathText;
+
 
     private float _timeToHideHint = 5f;
     private float _counterToHideHint;
@@ -158,5 +161,10 @@ public class UIController : MonoBehaviour
     {
         _missionText.gameObject.SetActive(true);
         _counterToHideHint = Time.time + _timeToHideHint;
+    }
+
+    public void OnDeath()
+    {
+        _deathText.SetActive(true);
     }
 }
