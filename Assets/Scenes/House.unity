@@ -2704,6 +2704,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2826396132474494449, guid: b26fb949fa572874a95d59d784462375, type: 3}
+      propertyPath: _bulletImpact
+      value: 
+      objectReference: {fileID: 100002, guid: d39ab699aa314a147969fd483aa55205, type: 3}
     - target: {fileID: 5880339238902469555, guid: b26fb949fa572874a95d59d784462375, type: 3}
       propertyPath: m_Size.y
       value: 0.81248254
