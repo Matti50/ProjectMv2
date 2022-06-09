@@ -59,7 +59,7 @@ public class ListenToShoot : MonoBehaviour
                 _playerDiedEvent.Raise();
 
 
-            if (Input.anyKey)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 SceneManager.LoadScene("MainMenu");
             }

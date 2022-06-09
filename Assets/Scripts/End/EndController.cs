@@ -5,6 +5,6 @@ public class EndController : MonoBehaviour
 {
     void Update()
     {
-        if (Input.anyKey) SceneManager.LoadScene("MainMenu");        
+        if (Input.GetKeyDown(KeyCode.Escape)) SceneManager.LoadScene("MainMenu");        
     }
 }
