@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 919132147740361039, guid: 0e65c43dd0d38854089ffb74a95664cd, type: 3}
+      propertyPath: _gotKilled
+      value: 
+      objectReference: {fileID: 11400000, guid: fcb8a97878ba5ca43a9b7b28e4c7a723, type: 2}
     - target: {fileID: 1237622362823441093, guid: 0e65c43dd0d38854089ffb74a95664cd, type: 3}
       propertyPath: m_Name
-      value: ZombieRED
+      value: ZombieB Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1902553516356657279, guid: 0e65c43dd0d38854089ffb74a95664cd, type: 3}
       propertyPath: m_RootOrder

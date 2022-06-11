@@ -236,4 +236,9 @@ public class ChasePlayerController : MonoBehaviour
     {
         return _zombieId;
     }
+
+    public void SetId(int id)
+    {
+        _zombieId = id;
+    }
 }

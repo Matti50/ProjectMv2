@@ -8,6 +8,9 @@ public class DoorLeverController : MonoBehaviour
     [SerializeField]
     private UIEvent _updateMission;
 
+    [SerializeField]
+    private Mission _secondMission;
+
     private Animator _animator;
 
     private int _triggerLeverId = Animator.StringToHash("LeverActivate");
@@ -24,8 +27,8 @@ public class DoorLeverController : MonoBehaviour
             if (Input.GetKey(KeyCode.E))
             {
                 _animator.SetBool(_triggerLeverId, true);
-                _leverTriggered.Raise();
-                _updateMission.Raise(new UIMissionChanged { MissionDescription = "Despeja la zona y entra a la casa" });
+                _leverTriggered.Raise(); 
+                _updateMission.Raise(new UIMissionChanged { MissionDescription = _secondMission.Description });
                 this.enabled = false;
             }
         }

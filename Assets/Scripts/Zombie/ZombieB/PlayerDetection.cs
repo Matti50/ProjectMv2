@@ -27,4 +27,9 @@ public class PlayerDetection : MonoBehaviour
             OnPlayerDetected.Invoke(hitInfo.transform, hitInfo.collider.gameObject.GetComponent<PlayerMovementController>().GetSpeed());
         }
     }
+
+    public void Enable()
+    {
+        this.enabled = true;
+    }
 }

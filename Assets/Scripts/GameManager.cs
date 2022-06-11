@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private UIEvent _loadFirstMission;
 
-    private bool _gameStarted;
+    private static bool _gameStarted;
 
     private Dictionary<string, Mission> _firstMissions;
 
@@ -94,8 +94,13 @@ public class GameManager : MonoBehaviour
         _loadFirstMission.Raise(new UIMissionChanged { MissionDescription = mission.Description });
     }
 
-    public void StartGame()
+    public static void StartGame()
     {
         _gameStarted = true;
+    }
+
+    public static bool GameStarted()
+    {
+        return _gameStarted;
     }
 }
